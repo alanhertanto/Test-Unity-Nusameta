@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="63446401-40e0-4508-9f35-cf7bd1de08fe" name="Default Changelist" comment="" />
+    <list default="true" id="63446401-40e0-4508-9f35-cf7bd1de08fe" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/SimpleJSON/SimpleJson.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/SimpleJSON/SimpleJson.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AssetsRelated.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AssetsRelated/GetAssetsFromURL.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AssetsRelated/GetAssetsFromURL.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AssetsRelated/LoadAsseFromURL.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AssetsRelated/LoadAsseFromURL.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ConfigRelated.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JsonRelated.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JsonRelated/JSONManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JsonRelated/JSONManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JsonRelated/PersibAPI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/JsonRelated/PersibAPI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/Config.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/Config.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/GridSpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/SimpleJSON/SimpleJson.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/JsonRelated/PersibAPI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AssetsRelated/LoadAsseFromURL.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -19,10 +59,30 @@
         <option value="$PROJECT_DIR$/Assets/StreamingAssets/Config.cfg" />
         <option value="$PROJECT_DIR$/Assets/Scripts/JsonRelated/PersibAPI.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.atteneder.gltfast@5.0.0/Runtime/Scripts/GltfAsset.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AssetsRelated/LoadAsseFromURL.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/JsonRelated/JSONController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AssetsRelated/LoadAsseFromURL.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AssetsRelated/AssetsController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ConfigRelated/ConfigManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BackendRelated/WebRequestManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/JsonRelated/JSONManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Singleton/AssetsRelated/SingletonAssetsController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Singleton/ConfigRelated/SingletonConfigManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/SimpleJSON/SimpleJsonBinary.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/SimpleJSON/SimpleJsonDotNetType.cs" />
         <option value="$PROJECT_DIR$/Assets/Plugins/SimpleJSON/SimpleJson.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Singleton/JsonRelated/SingletonJSONManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Singleton/BackendRelated/SingletonWebRequestManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/BackendRelated/WebRequestManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/JSON/PersibAPI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/JsonRelated/JSONManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/ConfigRelated/ConfigManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/GridController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/GameObjectRelated/Unit.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/TestGrid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/GridManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/GridSpawnManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" />
       </list>
     </option>
   </component>
@@ -32,6 +92,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -65,7 +126,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673614686155</updated>
-      <workItem from="1673614698715" duration="3695000" />
+      <workItem from="1673614698715" duration="16642000" />
+      <workItem from="1673674566974" duration="21679000" />
     </task>
     <servers />
   </component>
@@ -74,7 +136,44 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="504" y="130" key="RiderGenerateDialog" timestamp="1673697373090">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="504" y="130" key="RiderGenerateDialog/0.0.1440.860@0.0.1440.860" timestamp="1673697373090" />
+    <state x="537" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1673686843785">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="537" y="343" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.860@0.0.1440.860" timestamp="1673686843785" />
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1673693837011">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="383" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1440.860@0.0.1440.860" timestamp="1673693837011" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/BackendRelated/WebRequestManager.cs</url>
+          <line>20</line>
+          <properties documentPath="C:\Users\USER\Documents\ReTryDoom\Test-Unity-WIR\Assets\Scripts\BackendRelated\WebRequestManager.cs" initialLine="17" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
