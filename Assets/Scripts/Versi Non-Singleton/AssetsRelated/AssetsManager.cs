@@ -9,13 +9,13 @@ using UnityEngine.UI;
 
 public class AssetsManager : MonoBehaviour
 {
-    public JSONManager JsonManager;
+    [SerializeField] private JSONManager JsonManager;
     
-    public GridSpawnManager GridManager;
+    [SerializeField] private GridSpawnManager GridManager;
     
     public string BaseURL;
 
-    public List<Button> BGameObjectToSpawn;
+    private List<Button> BGameObjectToSpawn = new List<Button>();
     
     public GameObject ButtonPrefab;
 
@@ -24,10 +24,10 @@ public class AssetsManager : MonoBehaviour
     public Transform GOPlaceholder;
     
     public Animator ButtonAnimator;
-
-    public Slider LoadingSlide;
-
+    
     public CanvasGroup LoadingCanvasGroup;
+
+    public GameObject SpawnerVFXPrefab;
     
     public void GetListOfObjectFromAPI()
     {
@@ -58,7 +58,7 @@ public class AssetsManager : MonoBehaviour
         ButtonAnimator.Play("CloseSpawnList");
     }
     
-    public async void GLTFSpawn(string url,string objectName)
+    private async void GLTFSpawn(string url,string objectName)
     {
         var gltf = new GLTFast.GltfImport();
 
@@ -69,39 +69,40 @@ public class AssetsManager : MonoBehaviour
             NodeNameMethod = NameImportMethod.OriginalUnique
         };
 
+        CloseListObjectFromAPI();
+        ButtonAnimator.Play("OpenLoading");
         LoadingCanvasGroup.gameObject.SetActive(true);
         LoadingCanvasGroup.alpha = 1;
         LoadingCanvasGroup.interactable = true;
-        ButtonAnimator.Play("OpenLoading");
         
         // Load the glTF and pass along the settings
         var success = await gltf.Load(BaseURL + url, settings);
-
-
         
         if (success) {
             var gameObjectSpawned = new GameObject(objectName);
-            await gltf.InstantiateMainSceneAsync(gameObjectSpawned.transform);
+            await gltf.InstantiateSceneAsync(gameObjectSpawned.transform);
             gameObjectSpawned.transform.parent = GOPlaceholder;
             gameObjectSpawned.GetComponent<Animation>().Play();
             //GridManager.currentCell.x = 1;
             ButtonAnimator.Play("CloseLoading");
-            CloneGameObjectTo2x4(gameObjectSpawned);
+            StartCoroutine(CloneGameObjectTo2x4(gameObjectSpawned));
         }
         else {
             Debug.LogError("Loading glTF failed!");
         }
     }
     
-    public void CloneGameObjectTo2x4(GameObject gameObjectToClone)
+    private IEnumerator CloneGameObjectTo2x4(GameObject gameObjectToClone)
     {
         foreach (var animationClip in GetAnimationFromObject(gameObjectToClone))
         {
+            yield return new WaitForSeconds(0.25f);
             // GameObject spawnedGOClone = Instantiate(gameObjectToClone, GOPlaceholder);
             var spawnedGOClone = GridManager.SpawningObject(gameObjectToClone,GOPlaceholder);
             Animation spawnedAnimation = spawnedGOClone.GetComponent<Animation>(); 
             spawnedAnimation.clip = animationClip; 
-            spawnedAnimation.Play(); 
+            spawnedAnimation.Play();
+            Instantiate(SpawnerVFXPrefab, spawnedGOClone.transform, false);
         }
         gameObjectToClone.SetActive(false);
     }

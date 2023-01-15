@@ -29,6 +29,9 @@
             <e p="JsonRelated" t="Include">
               <e p="JSONManager.cs" t="Include" />
             </e>
+            <e p="VisualEffectsRelated" t="Include">
+              <e p="DisolveController.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">
