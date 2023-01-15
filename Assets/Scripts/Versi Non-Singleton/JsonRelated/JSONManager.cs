@@ -5,13 +5,14 @@ using UnityEngine.Networking;
 
 public class JSONManager : MonoBehaviour
 {
-    //Public
-    public APIWearable APIWearable;
     
-    //SerializeField
+    [Header("Config Manager Reference")]
     public ConfigManager ConfigManager;
+    
+    [Header("Data Get From API")]
+    public APIWearable APIWearable;
 
-    //Private
+    //Private URL of The API From Config
     private string APIURL;
     
     private void Start()
@@ -20,11 +21,13 @@ public class JSONManager : MonoBehaviour
     }
     private void Init()
     {
+        //Get API URL From Config.cfg File Using ConfigManager (Get When Script Called on Awake()
         APIURL = ConfigManager.CachedConfig[0] + ConfigManager.CachedConfig[1];
         StartCoroutine(GetAPIWearable(APIURL));
     }
     public IEnumerator GetAPIWearable(string url)
     {
+        //Get API using UnityWebRequest.Get()
         using (UnityWebRequest www = UnityWebRequest.Get(url))
         {
             var webRequest = www.SendWebRequest();
@@ -35,9 +38,11 @@ public class JSONManager : MonoBehaviour
             }
             else
             {
+                //Wait Until WebRequest Done Get the Data
                 yield return new WaitUntil(()=>webRequest.isDone);
                 if (www.downloadHandler.text != null)
                 {
+                    //Parsing the Data from JSON to Serializable
                     JSONNode parsedJSON = JSON.Parse(www.downloadHandler.text);
                     var dataParse = JSONArray.Parse(parsedJSON);
                     APIWearable.statusCode = parsedJSON["statusCode"];
@@ -47,6 +52,7 @@ public class JSONManager : MonoBehaviour
                     APIWearable.timestamp = parsedJSON["timestamp"];
                     for (int i = 0; i < parsedJSON["data"].Count; i++)
                     {
+                        //Loop the datas and file meta based on data field on API Data
                         APIData apiData = new APIData();
                         FileMeta fileMeta = new FileMeta();
                         apiData.id = parsedJSON["data"][i]["id"];
