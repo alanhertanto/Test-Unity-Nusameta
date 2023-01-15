@@ -13,8 +13,12 @@ public class ConfigManager : MonoBehaviour
     public List<string> CachedConfig = new List<string>();
     //Private
     private string _path;
+
+    public static ConfigManager Instance;
+
     private void Awake()
     {
+        Instance = this;
         _path = Path.Combine(Application.streamingAssetsPath,"Config.cfg");
         Read();
     }

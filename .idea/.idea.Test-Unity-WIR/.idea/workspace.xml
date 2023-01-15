@@ -22,12 +22,10 @@
     <list default="true" id="63446401-40e0-4508-9f35-cf7bd1de08fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/Canvas.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Canvas.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/CloseLoading.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/CloseLoading.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animation/OpenLoading.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/OpenLoading.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NonSingleton.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NonSingleton.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/JsonRelated/JSONManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/JsonRelated/JSONManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/AssetsRelated/AssetsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/AssetsRelated/AssetsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/AssetsRelated/GridSpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/AssetsRelated/GridSpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ConfigRelated/ConfigManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/ConfigRelated/ConfigManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/JsonRelated/JSONManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/JsonRelated/JSONManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +36,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/VisualEffectsRelated/DisolveController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/GridSpawnManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/SimpleJSON/SimpleJson.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/JsonRelated/JSONManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -79,6 +75,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/UIRelated/TypewriterEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/JsonRelated/JSONManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/ConfigRelated/ConfigManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/AssetsRelated/GridSpawnManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/JsonRelated/JSONManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Core/AssetsRelated/AssetsManager.cs" />
       </list>
     </option>
   </component>

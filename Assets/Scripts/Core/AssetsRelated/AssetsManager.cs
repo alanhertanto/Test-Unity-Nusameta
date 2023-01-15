@@ -10,10 +10,6 @@ using Random = System.Random;
 
 public class AssetsManager : MonoBehaviour
 {
-    public JSONManager JsonManager;
-    
-    public GridSpawnManager GridManager;
-    
     public string BaseURL;
 
     private List<Button> BGameObjectToSpawn = new List<Button>();
@@ -42,7 +38,7 @@ public class AssetsManager : MonoBehaviour
     public void GetListOfObjectFromAPI()
     {
         ButtonAnimator.Play("OpenSpawnList");
-        foreach (var parsedData in JsonManager.APIWearable.datas)
+        foreach (var parsedData in JSONManager.Instance.APIWearable.datas)
         {
             Button spawnerButton = Instantiate(ButtonPrefab, ButtonPlaceholder).GetComponent<Button>();
             spawnerButton.GetComponentInChildren<TMP_Text>().text = parsedData.wearableName;
@@ -70,6 +66,23 @@ public class AssetsManager : MonoBehaviour
     
     private async void GLTFSpawn(string url,string objectName)
     {
+        var gameObjectSpawned = OriSpawnedGOList.Find(x => x.name == objectName);
+
+        CloseListObjectFromAPI();
+        ButtonAnimator.Play("OpenLoading");
+        LoadingCanvasGroup.gameObject.SetActive(true);
+        LoadingCanvasGroup.alpha = 1;
+        LoadingCanvasGroup.interactable = true;
+
+        if (gameObjectSpawned != null)
+        {
+            GameObject spawned = OriSpawnedGOList[OriSpawnedGOList.IndexOf(gameObjectSpawned)];
+            spawned.SetActive(true);
+            DestroySpawnedGO();
+            StartCoroutine(CloneGameObjectTo2x4(spawned));
+            ButtonAnimator.Play("CloseLoading");
+            return;
+        }
         var gltf = new GLTFast.GltfImport();
 
         // Create a settings object and configure it accordingly
@@ -79,34 +92,19 @@ public class AssetsManager : MonoBehaviour
             NodeNameMethod = NameImportMethod.OriginalUnique
         };
 
-        CloseListObjectFromAPI();
-        ButtonAnimator.Play("OpenLoading");
-        LoadingCanvasGroup.gameObject.SetActive(true);
-        LoadingCanvasGroup.alpha = 1;
-        LoadingCanvasGroup.interactable = true;
-        
         // Load the glTF and pass along the settings
         var success = await gltf.Load(BaseURL + url, settings);
 
-        if (success) {
-            var gameObjectSpawned = OriSpawnedGOList.Find(x => x.name == objectName);
-            if (gameObjectSpawned!=null)
-            {
-                GameObject spawned = OriSpawnedGOList[OriSpawnedGOList.IndexOf(gameObjectSpawned)];
-                spawned.SetActive(true);
-                StartCoroutine(CloneGameObjectTo2x4(spawned));
-            }
-            else
-            {
-                gameObjectSpawned = new GameObject(objectName);
-                await gltf.InstantiateSceneAsync(gameObjectSpawned.transform);
-                gameObjectSpawned.transform.parent = GOPlaceholder;
-                gameObjectSpawned.GetComponent<Animation>().Play();
-                OriSpawnedGOList.Add(gameObjectSpawned);
-                StartCoroutine(CloneGameObjectTo2x4(gameObjectSpawned));
-            }
-            ButtonAnimator.Play("CloseLoading");
+        if (success)
+        {
+            gameObjectSpawned = new GameObject(objectName);
+            await gltf.InstantiateSceneAsync(gameObjectSpawned.transform);
+            gameObjectSpawned.transform.parent = GOPlaceholder;
+            gameObjectSpawned.GetComponent<Animation>().Play();
+            OriSpawnedGOList.Add(gameObjectSpawned);
             DestroySpawnedGO();
+            StartCoroutine(CloneGameObjectTo2x4(gameObjectSpawned));
+            ButtonAnimator.Play("CloseLoading");
         }
         else {
             Debug.LogError("Loading glTF failed!");
@@ -118,7 +116,7 @@ public class AssetsManager : MonoBehaviour
         foreach (var animationClip in GetAnimationFromObject(gameObjectToClone))
         {
             yield return new WaitForSeconds(0.25f);
-            var spawnedGOClone = GridManager.SpawningObject(gameObjectToClone,GOPlaceholder);
+            var spawnedGOClone = GridSpawnManager.Instance.SpawningObject(gameObjectToClone,GOPlaceholder);
             Animation spawnedAnimation = spawnedGOClone.GetComponent<Animation>();
             spawnedAnimation.clip = animationClip; 
             spawnedAnimation.Play();
@@ -139,6 +137,7 @@ public class AssetsManager : MonoBehaviour
 
     private List<AnimationClip> GetAnimationFromObject(GameObject spawned)
     {
+        animations.Clear();
         foreach (AnimationState animation in spawned.GetComponent<Animation>())
         {
             animations.Add(animation.clip);            

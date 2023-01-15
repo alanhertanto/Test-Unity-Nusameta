@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class GridSpawnManager : MonoBehaviour
 {
+    public static GridSpawnManager Instance;
+    
     public Vector2 GridSize;
 
     public Vector2 CellGap;
 
     public Vector2Int currentCell;
-    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public GameObject SpawningObject(GameObject objectToSpawn, Transform placeHolder)
     {

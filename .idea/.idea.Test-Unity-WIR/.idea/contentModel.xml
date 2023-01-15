@@ -15,10 +15,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="JSON" t="Include">
-            <e p="PersibAPI.cs" t="Include" />
-          </e>
-          <e p="Versi Non-Singleton" t="Include">
+          <e p="Core" t="Include">
             <e p="AssetsRelated" t="Include">
               <e p="AssetsManager.cs" t="Include" />
               <e p="GridSpawnManager.cs" t="Include" />
@@ -35,6 +32,9 @@
             <e p="VisualEffectsRelated" t="Include">
               <e p="DisolveController.cs" t="Include" />
             </e>
+          </e>
+          <e p="JSON" t="Include">
+            <e p="PersibAPI.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

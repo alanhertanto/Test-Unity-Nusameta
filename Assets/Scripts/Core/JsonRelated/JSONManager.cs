@@ -5,14 +5,18 @@ using UnityEngine.Networking;
 
 public class JSONManager : MonoBehaviour
 {
+    public static JSONManager Instance;
+    
     //Public
     public APIWearable APIWearable;
     
-    //SerializeField
-    public ConfigManager ConfigManager;
-
     //Private
     private string APIURL;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     
     private void Start()
     {
@@ -20,7 +24,7 @@ public class JSONManager : MonoBehaviour
     }
     private void Init()
     {
-        APIURL = ConfigManager.CachedConfig[0] + ConfigManager.CachedConfig[1];
+        APIURL = ConfigManager.Instance.CachedConfig[0] + ConfigManager.Instance.CachedConfig[1];
         StartCoroutine(GetAPIWearable(APIURL));
     }
     public IEnumerator GetAPIWearable(string url)
