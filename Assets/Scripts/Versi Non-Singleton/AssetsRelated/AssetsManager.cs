@@ -6,16 +6,22 @@ using GLTFast;
 using GLTFast.Loading;
 using TMPro;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class AssetsManager : MonoBehaviour
 {
-    [SerializeField] private JSONManager JsonManager;
+    public JSONManager JsonManager;
     
-    [SerializeField] private GridSpawnManager GridManager;
+    public GridSpawnManager GridManager;
     
     public string BaseURL;
 
     private List<Button> BGameObjectToSpawn = new List<Button>();
+
+    private List<GameObject> SpawnedClones = new List<GameObject>();
+    
+    public List<GameObject> OriSpawnedGOList = new List<GameObject>();
+
     
     public GameObject ButtonPrefab;
 
@@ -26,9 +32,13 @@ public class AssetsManager : MonoBehaviour
     public Animator ButtonAnimator;
     
     public CanvasGroup LoadingCanvasGroup;
-
+    
     public GameObject SpawnerVFXPrefab;
     
+    private List<AnimationClip> animations = new List<AnimationClip>();
+
+    public TypewriterEffect LoadingText;
+
     public void GetListOfObjectFromAPI()
     {
         ButtonAnimator.Play("OpenSpawnList");
@@ -52,7 +62,7 @@ public class AssetsManager : MonoBehaviour
     {
         foreach (var spawnedButton in BGameObjectToSpawn)
         {
-            Destroy(spawnedButton.gameObject);
+            DestroyImmediate(spawnedButton.gameObject);
         }
         BGameObjectToSpawn.Clear();
         ButtonAnimator.Play("CloseSpawnList");
@@ -77,15 +87,26 @@ public class AssetsManager : MonoBehaviour
         
         // Load the glTF and pass along the settings
         var success = await gltf.Load(BaseURL + url, settings);
-        
+
         if (success) {
-            var gameObjectSpawned = new GameObject(objectName);
-            await gltf.InstantiateSceneAsync(gameObjectSpawned.transform);
-            gameObjectSpawned.transform.parent = GOPlaceholder;
-            gameObjectSpawned.GetComponent<Animation>().Play();
-            //GridManager.currentCell.x = 1;
+            var gameObjectSpawned = OriSpawnedGOList.Find(x => x.name == objectName);
+            if (gameObjectSpawned!=null)
+            {
+                GameObject spawned = OriSpawnedGOList[OriSpawnedGOList.IndexOf(gameObjectSpawned)];
+                spawned.SetActive(true);
+                StartCoroutine(CloneGameObjectTo2x4(spawned));
+            }
+            else
+            {
+                gameObjectSpawned = new GameObject(objectName);
+                await gltf.InstantiateSceneAsync(gameObjectSpawned.transform);
+                gameObjectSpawned.transform.parent = GOPlaceholder;
+                gameObjectSpawned.GetComponent<Animation>().Play();
+                OriSpawnedGOList.Add(gameObjectSpawned);
+                StartCoroutine(CloneGameObjectTo2x4(gameObjectSpawned));
+            }
             ButtonAnimator.Play("CloseLoading");
-            StartCoroutine(CloneGameObjectTo2x4(gameObjectSpawned));
+            DestroySpawnedGO();
         }
         else {
             Debug.LogError("Loading glTF failed!");
@@ -97,32 +118,37 @@ public class AssetsManager : MonoBehaviour
         foreach (var animationClip in GetAnimationFromObject(gameObjectToClone))
         {
             yield return new WaitForSeconds(0.25f);
-            // GameObject spawnedGOClone = Instantiate(gameObjectToClone, GOPlaceholder);
             var spawnedGOClone = GridManager.SpawningObject(gameObjectToClone,GOPlaceholder);
-            Animation spawnedAnimation = spawnedGOClone.GetComponent<Animation>(); 
+            Animation spawnedAnimation = spawnedGOClone.GetComponent<Animation>();
             spawnedAnimation.clip = animationClip; 
             spawnedAnimation.Play();
             Instantiate(SpawnerVFXPrefab, spawnedGOClone.transform, false);
+            SpawnedClones.Add(spawnedGOClone);
         }
         gameObjectToClone.SetActive(false);
     }
-    
-    
+
+    private void DestroySpawnedGO()
+    {
+        foreach (var spawnedClone in SpawnedClones)
+        {
+            DestroyImmediate(spawnedClone);
+        }
+        SpawnedClones.Clear();
+    }
 
     private List<AnimationClip> GetAnimationFromObject(GameObject spawned)
     {
-        List<AnimationClip> animations = new List<AnimationClip>();
         foreach (AnimationState animation in spawned.GetComponent<Animation>())
         {
             animations.Add(animation.clip);            
         }
-        //animations.RemoveAt(0);
         return animations;
     }
 
     private bool CheckURLValid(string url)
     {
-        if (string.IsNullOrEmpty(url))
+        if (string.IsNullOrEmpty(url)||!url.Contains(".gltf"))
             return false;
         
         return true;

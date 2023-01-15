@@ -9,7 +9,7 @@ public class JSONManager : MonoBehaviour
     public APIWearable APIWearable;
     
     //SerializeField
-    [SerializeField]private ConfigManager ConfigManager;
+    public ConfigManager ConfigManager;
 
     //Private
     private string APIURL;

@@ -21,48 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="63446401-40e0-4508-9f35-cf7bd1de08fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test-Unity-WIR/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/Canvas.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/Canvas.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animation/CloseLoading.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/CloseLoading.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Disintegrate.vfx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Disintegrate.vfx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Disolve 4.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Disolve 4.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Disolve.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Disolve.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DissolveShader.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DissolveShader.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HeatHaze.vfx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HeatHaze.vfx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HeatHaze_Unlit.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HeatHaze_Unlit.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/OpenLoading.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/OpenLoading.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/NonSingleton.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NonSingleton.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/NonSingleton/GlobalVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NonSingleton/GlobalVolumeProfile.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spawn Effect.vfx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spawn Effect.vfx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpawnIdle.vfx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SpawnIdle.vfx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Speedlines.vfx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Speedlines.vfx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestDisolveByAnime.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestDisolveByAnime.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Visual Effect.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Visual Effect.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/akshar-dave-lXIpMj1AFUI-unsplash.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/akshar-dave-lXIpMj1AFUI-unsplash.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/genshin_impact_ayaka.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/genshin_impact_ayaka/Flying Back Death.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/genshin_impact_ayaka/Flying Back Death.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/imageedit_3_6889150701.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/imageedit_3_6889150701.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/wave-textures-white-background_91611-508 (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/wave-textures-white-background_91611-508 (1).png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/whitespike.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/whitespike.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/衣服.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/衣服.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/VFXManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/JsonRelated/JSONManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/JsonRelated/JSONManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +65,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Singleton/BackendRelated/SingletonWebRequestManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/BackendRelated/WebRequestManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/JSON/PersibAPI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/JsonRelated/JSONManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/ConfigRelated/ConfigManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/GridController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsController.cs" />
@@ -111,7 +75,10 @@
         <option value="$PROJECT_DIR$/Assets/ButtonGetter.cs" />
         <option value="$PROJECT_DIR$/Assets/ButtonGet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/VisualEffectsRelated/DisolveController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/UIRelated/TypewritterEffect.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/UIRelated/TypewriterEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/AssetsRelated/AssetsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Versi Non-Singleton/JsonRelated/JSONManager.cs" />
       </list>
     </option>
   </component>
@@ -121,6 +88,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -157,7 +125,7 @@
       <updated>1673614686155</updated>
       <workItem from="1673614698715" duration="16642000" />
       <workItem from="1673674566974" duration="21966000" />
-      <workItem from="1673764310237" duration="8575000" />
+      <workItem from="1673764310237" duration="17889000" />
     </task>
     <servers />
   </component>
