@@ -608,6 +608,7 @@ MonoBehaviour:
   JsonManager: {fileID: 1356543733}
   GridManager: {fileID: 635509312}
   BaseURL: https://dev-pp-bucket-ap-southeast-3.s3.ap-southeast-3.amazonaws.com/
+  OriSpawnedGOList: []
   ButtonPrefab: {fileID: 8713936296831722846, guid: 819ce153b4ea88042aaf40672203da01,
     type: 3}
   ButtonPlaceholder: {fileID: 1331101178}
@@ -616,6 +617,7 @@ MonoBehaviour:
   LoadingCanvasGroup: {fileID: 892388735}
   SpawnerVFXPrefab: {fileID: 7839437115817250910, guid: c69e40d667165ef4abebd7efb416a37f,
     type: 3}
+  LoadingText: {fileID: 515740436}
 --- !u!1 &635509311
 GameObject:
   m_ObjectHideFlags: 0
