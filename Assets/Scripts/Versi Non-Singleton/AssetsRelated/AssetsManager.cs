@@ -1,12 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using GLTFast;
-using GLTFast.Loading;
 using TMPro;
 using UnityEngine.UI;
-using Random = System.Random;
 
 public class AssetsManager : MonoBehaviour
 {
@@ -40,11 +36,7 @@ public class AssetsManager : MonoBehaviour
     public List<GameObject> OriSpawnedGOList = new List<GameObject>();
 
     private List<Button> BGameObjectToSpawn = new List<Button>();
-
-    private List<GameObject> SpawnedClones = new List<GameObject>();
-
-    private List<AnimationClip> animations = new List<AnimationClip>();
-
+    
     public void GetListOfObjectFromAPI()
     {
         ButtonAnimator.Play("OpenSpawnList");
@@ -80,20 +72,20 @@ public class AssetsManager : MonoBehaviour
     //Make the Function Asynchronous
     private async void GLTFSpawn(string url,string objectName)
     {
-        //find if the GO that from GLTFast has been instantiated      
-        var gameObjectSpawned = OriSpawnedGOList.Find(x => x.name == objectName);
         CloseListObjectFromAPI();
         ButtonAnimator.Play("OpenLoading");
-        LoadingCanvasGroup.gameObject.SetActive(true);
         LoadingCanvasGroup.alpha = 1;
         LoadingCanvasGroup.interactable = true;
+        
+        //find if the GO that from GLTFast has been instantiated      
+        var gameObjectSpawned = OriSpawnedGOList.Find(x => x.name == objectName);
         if (gameObjectSpawned != null)
         {
-            //Set the Original Instantiated from GLTFast GO to Active instead of destroy it
             GameObject spawned = OriSpawnedGOList[OriSpawnedGOList.IndexOf(gameObjectSpawned)];
+            //Set the Original Instantiated from GLTFast GO to Active instead of destroy it
             spawned.SetActive(true);
             DestroySpawnedGO();
-            StartCoroutine(CloneGameObjectTo2x4(spawned));
+            GridManager.BeginSpawning(SpawnerVFXPrefab,GOPlaceholder,gameObjectSpawned);
             ButtonAnimator.Play("CloseLoading");
             return;
         }
@@ -117,47 +109,23 @@ public class AssetsManager : MonoBehaviour
             gameObjectSpawned.GetComponent<Animation>().Play();
             OriSpawnedGOList.Add(gameObjectSpawned);
             DestroySpawnedGO();
-            StartCoroutine(CloneGameObjectTo2x4(gameObjectSpawned));
+            GridManager.BeginSpawning(SpawnerVFXPrefab, GOPlaceholder, gameObjectSpawned);
             ButtonAnimator.Play("CloseLoading");
-         }
+        }
         else {
             Debug.LogError("Loading glTF failed!");
         }
     }
     
-    private IEnumerator CloneGameObjectTo2x4(GameObject gameObjectToClone)
-    {
-        foreach (var animationClip in GetAnimationFromObject(gameObjectToClone))
-        {
-            yield return new WaitForSeconds(0.25f);
-            //Spawn The Object
-            var spawnedGOClone = GridManager.SpawningObject(gameObjectToClone,GOPlaceholder);
-            Animation spawnedAnimation = spawnedGOClone.GetComponent<Animation>();
-            spawnedAnimation.clip = animationClip; 
-            spawnedAnimation.Play();
-            //Instantiate The SpawnerVFX and add it to the child of the clone
-            Instantiate(SpawnerVFXPrefab, spawnedGOClone.transform, false);
-            SpawnedClones.Add(spawnedGOClone);
-        }
-        gameObjectToClone.SetActive(false);
-    }
     private void DestroySpawnedGO()
     {
-        foreach (var spawnedClone in SpawnedClones)
+        foreach (var spawnedClone in GridManager.Clones)
         {
             DestroyImmediate(spawnedClone);
         }
-        SpawnedClones.Clear();
+        GridManager.Clones.Clear();
     }
     
-    private List<AnimationClip> GetAnimationFromObject(GameObject spawned)
-    {
-        foreach (AnimationState animation in spawned.GetComponent<Animation>())
-        {
-            animations.Add(animation.clip);            
-        }
-        return animations;
-    }
     private bool CheckURLValid(string url)
     {
         if (string.IsNullOrEmpty(url)||!url.Contains(".gltf"))

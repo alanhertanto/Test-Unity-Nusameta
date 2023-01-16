@@ -1,48 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class GridSpawnManager : MonoBehaviour
 {
-    [Header("Grid Size (Width * Height)")]
-    public Vector2 GridSize;
+    public int gridWidth;
+    public int gridHeight;
+    public float cellGap;
+    public float waitDuration;
 
-    [Header("Gap Between Cell (Width * Height)")]
-    public Vector2 CellGap;
+    public List<GameObject> Clones = new List<GameObject>();
 
-    private Vector2Int currentCell;
-
-    public EventSystem OnSpawning;
+    private List<AnimationClip> AnimationClips = new List<AnimationClip>();
     
-    public GameObject SpawningObject(GameObject objectToSpawn, Transform placeHolder)
+    
+    public delegate void ObjectInstantiatedEventHandler(GameObject instantiatedObject, GameObject vfxPrefab, AnimationClip clip);
+
+    public static event ObjectInstantiatedEventHandler OnObjectInstantiated;
+
+    public void BeginSpawning(GameObject vfxPrefab, Transform GOPlaceholder, GameObject gameObjectToClone)
     {
-        //Set The Gap to -1, if not reduce it to 1, then the object will actually spawned +2
-        CellGap = new Vector2(CellGap.x - 1,CellGap.y -1);
-
-        Quaternion randomizedDirection = Quaternion.Euler(new Vector3(0,Random.Range(0,360),0));
-
-        //Spawn the Object
-        GameObject spawned = Instantiate(objectToSpawn, placeHolder.position,randomizedDirection);
-        //Check if the cell position are less than the Grid Width
-        if (currentCell.x < GridSize.x-1)
+        AnimationClips.Clear();
+        foreach (AnimationState animationState in gameObjectToClone.GetComponent<Animation>())
         {
-            //If current cell are less than Grid Width, then spawn the GameObject with gap for each spawned object,
-            //then assign the clone parent to the placeholder
-            spawned.transform.parent = placeHolder;
-            spawned.transform.position = new Vector3(currentCell.x+CellGap.x, placeHolder.position.y,
-                currentCell.y+CellGap.y);
-            currentCell.x += 1;
+            AnimationClips.Add(animationState.clip);
         }
-        else
+        StartCoroutine(SpawnObject(vfxPrefab, GOPlaceholder, gameObjectToClone));
+    }
+    
+    private IEnumerator SpawnObject(GameObject vfxPrefab, Transform GOPlaceholder, GameObject gameObjectToClone)
+    {
+        Clones.Clear();
+        for (int currx = 0; currx < gridWidth; currx++)
         {
-            //If current cell are more than Grid Width, then spawn the GameObject above the current cell with gap
-            //for each spawned object, then assign the clone parent to the placeholder
-            spawned.transform.parent = placeHolder;
-            spawned.transform.position = new Vector3(currentCell.x+CellGap.x, placeHolder.position.y,
-                currentCell.y+CellGap.y);
-            currentCell.x = 0;
-            currentCell.y += 1;
+            for (int currz = 0; currz < gridHeight; currz++)
+            {
+                Quaternion randomizedDirection = Quaternion.Euler(new Vector3(0,Random.Range(0,360),0));
+                Vector3 gridPosition = new Vector3(currx * (cellGap + gameObjectToClone.transform.localScale.x), 0,currz * (cellGap + gameObjectToClone.transform.localScale.z));
+                GameObject instantiatedObject = Instantiate(gameObjectToClone, gridPosition,randomizedDirection);
+                instantiatedObject.transform.parent = GOPlaceholder;
+                Clones.Add(instantiatedObject);
+                instantiatedObject.AddComponent<GOHandler>();
+                int randomIndex = Random.Range(0, AnimationClips.Count);
+                AnimationClip clip = AnimationClips[randomIndex];
+                AnimationClips.RemoveAt(randomIndex);
+                yield return new WaitForSeconds(waitDuration);
+                OnObjectInstantiated?.Invoke(instantiatedObject, vfxPrefab, clip);
+            }
         }
-        //Return the spawned GameObject
-        return spawned;
+        gameObjectToClone.SetActive(false);
     }
 }

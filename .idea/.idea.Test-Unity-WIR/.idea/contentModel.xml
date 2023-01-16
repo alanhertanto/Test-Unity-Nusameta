@@ -21,6 +21,7 @@
           <e p="Versi Non-Singleton" t="Include">
             <e p="AssetsRelated" t="Include">
               <e p="AssetsManager.cs" t="Include" />
+              <e p="GOHandler.cs" t="Include" />
               <e p="GridSpawnManager.cs" t="Include" />
             </e>
             <e p="ConfigRelated" t="Include">
@@ -28,12 +29,6 @@
             </e>
             <e p="JsonRelated" t="Include">
               <e p="JSONManager.cs" t="Include" />
-            </e>
-            <e p="UIRelated" t="Include">
-              <e p="TypewriterEffect.cs" t="Include" />
-            </e>
-            <e p="VisualEffectsRelated" t="Include">
-              <e p="DisolveController.cs" t="Include" />
             </e>
           </e>
         </e>
