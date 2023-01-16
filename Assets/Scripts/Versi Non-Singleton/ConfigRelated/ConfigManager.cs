@@ -6,12 +6,10 @@ using UnityEngine;
 
 public class ConfigManager : MonoBehaviour
 {
-    //Public
     [Header("Hasil dari Config.cfg")]
     [Tooltip("File berada di Streaming Assets")]
-    [Space]
     public List<string> CachedConfig = new List<string>();
-    //Private
+
     private string _path;
     private void Awake()
     {
@@ -20,14 +18,17 @@ public class ConfigManager : MonoBehaviour
     }
     private void Read()
     {
+        //Search the Config.cfg file on StreamingAssets
         if (!File.Exists(_path))
         {
             Debug.Log("Config file not found!");
             return;
         }
+        //Read the Lines from Config.cfg
         var lines = File.ReadLines(_path).ToList();
         lines.ForEach(x =>
         {
+            //Split the lines List after ": " to the List
             CachedConfig.Add(x.Split(new string[]{": "},StringSplitOptions.None)[1]);
         });
     }

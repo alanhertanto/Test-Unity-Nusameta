@@ -292,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &251589523
 RectTransform:
   m_ObjectHideFlags: 0
@@ -456,15 +456,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JsonManager: {fileID: 1356543733}
   GridManager: {fileID: 635509312}
+  TypewriterEffect: {fileID: 0}
   BaseURL: https://dev-pp-bucket-ap-southeast-3.s3.ap-southeast-3.amazonaws.com/
-  BGameObjectToSpawn: []
   ButtonPrefab: {fileID: 8713936296831722846, guid: 819ce153b4ea88042aaf40672203da01,
+    type: 3}
+  SpawnerVFXPrefab: {fileID: 7839437115817250910, guid: c69e40d667165ef4abebd7efb416a37f,
     type: 3}
   ButtonPlaceholder: {fileID: 1331101178}
   GOPlaceholder: {fileID: 1028086364}
   ButtonAnimator: {fileID: 762190323}
-  LoadingSlide: {fileID: 0}
   LoadingCanvasGroup: {fileID: 892388735}
+  OriSpawnedGOList: []
 --- !u!1 &635509311
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,9 +496,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb8eafca22be14429d2d68f199abf7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridSize: {x: 4, y: 2}
-  CellGap: {x: 1, y: 1}
-  currentCell: {x: 0, y: 0}
+  gridWidth: 4
+  gridHeight: 2
+  cellGap: 2
+  waitDuration: 0.25
+  Clones: []
+  AnimationClips: []
 --- !u!4 &635509313
 Transform:
   m_ObjectHideFlags: 0
@@ -640,7 +645,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 860421234}
   m_HandleRect: {fileID: 860421233}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1833,7 +1838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000604314}
+  m_AnchoredPosition: {x: 0, y: 0.00050728273}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1331101179
@@ -1906,6 +1911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086234c2ae8276d4b85c2c2130cf4128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConfigManager: {fileID: 727924216}
   APIWearable:
     statusCode: 0
     message: 
@@ -1913,7 +1919,6 @@ MonoBehaviour:
     metadata: 
     service: 
     timestamp: 
-  ConfigManager: {fileID: 727924216}
 --- !u!1 &1458048515
 GameObject:
   m_ObjectHideFlags: 0

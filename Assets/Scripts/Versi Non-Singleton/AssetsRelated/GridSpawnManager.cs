@@ -1,34 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridSpawnManager : MonoBehaviour
 {
-    public Vector2 GridSize;
+    public int gridWidth;
+    public int gridHeight;
+    public float cellGap;
+    public float waitDuration;
 
-    public Vector2 CellGap;
+    public List<GameObject> Clones = new List<GameObject>();
 
-    public Vector2Int currentCell;
+    private List<AnimationClip> AnimationClips = new List<AnimationClip>();
     
+    
+    public delegate void ObjectInstantiatedEventHandler(GameObject instantiatedObject, GameObject vfxPrefab, AnimationClip clip);
 
-    public GameObject SpawningObject(GameObject objectToSpawn, Transform placeHolder)
+    public static event ObjectInstantiatedEventHandler OnObjectInstantiated;
+
+    public void BeginSpawning(GameObject vfxPrefab, Transform GOPlaceholder, GameObject gameObjectToClone)
     {
-        Quaternion randomizedDirection = Quaternion.Euler(new Vector3(0,Random.Range(0,360),0));
-        GameObject spawned = Instantiate(objectToSpawn, placeHolder.position,randomizedDirection);
-        if (currentCell.x < GridSize.x-1)
+        AnimationClips.Clear();
+        foreach (AnimationState animationState in gameObjectToClone.GetComponent<Animation>())
         {
-            spawned.transform.parent = placeHolder;
-            spawned.transform.position = new Vector3(currentCell.x, placeHolder.position.y,
-                currentCell.y);
-            currentCell.x += 1;
+            AnimationClips.Add(animationState.clip);
         }
-        else
+        StartCoroutine(SpawnObject(vfxPrefab, GOPlaceholder, gameObjectToClone));
+    }
+    
+    private IEnumerator SpawnObject(GameObject vfxPrefab, Transform GOPlaceholder, GameObject gameObjectToClone)
+    {
+        Clones.Clear();
+        for (int currx = 0; currx < gridWidth; currx++)
         {
-            spawned.transform.parent = placeHolder;
-            spawned.transform.position = new Vector3(currentCell.x, placeHolder.position.y,
-                currentCell.y);
-            currentCell.x = 0;
-            currentCell.y += 1;
+            for (int currz = 0; currz < gridHeight; currz++)
+            {
+                Quaternion randomizedDirection = Quaternion.Euler(new Vector3(0,Random.Range(0,360),0));
+                Vector3 gridPosition = new Vector3(currx * (cellGap + gameObjectToClone.transform.localScale.x), 0,currz * (cellGap + gameObjectToClone.transform.localScale.z));
+                GameObject instantiatedObject = Instantiate(gameObjectToClone, gridPosition,randomizedDirection);
+                instantiatedObject.transform.parent = GOPlaceholder;
+                Clones.Add(instantiatedObject);
+                instantiatedObject.AddComponent<GOHandler>();
+                int randomIndex = Random.Range(0, AnimationClips.Count);
+                AnimationClip clip = AnimationClips[randomIndex];
+                AnimationClips.RemoveAt(randomIndex);
+                yield return new WaitForSeconds(waitDuration);
+                OnObjectInstantiated?.Invoke(instantiatedObject, vfxPrefab, clip);
+            }
         }
-        return spawned;
-        
+        gameObjectToClone.SetActive(false);
     }
 }

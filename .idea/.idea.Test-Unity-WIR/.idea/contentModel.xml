@@ -21,6 +21,7 @@
           <e p="Versi Non-Singleton" t="Include">
             <e p="AssetsRelated" t="Include">
               <e p="AssetsManager.cs" t="Include" />
+              <e p="GOHandler.cs" t="Include" />
               <e p="GridSpawnManager.cs" t="Include" />
             </e>
             <e p="ConfigRelated" t="Include">
